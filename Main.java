@@ -29,4 +29,4 @@ public class Main{
         String res=s2.getName();
         s2.PrintVal();
     }
-}
+} 

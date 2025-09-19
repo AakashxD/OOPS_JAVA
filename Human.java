@@ -1,3 +1,5 @@
+
+// outside class cant be static 
 public class Human{
  // if i put another class inside human and i want to create a static varibale inside it so i have make that class static ex -> public static class Human
             int age;
