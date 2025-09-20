@@ -1,20 +1,25 @@
 package Learning;
-abstract class Parents {
+    // hidding un -necassary details and showing only usefull information
+    // abstract method written in parent class must be overwritten by child class
+    // a class having one or more abstract method should be also rename to abstract class
+public abstract class Parents {
     public String career;
     public int age;
 
+    // Constructor
     Parents(String career, int age) {
         this.career = career;
         this.age = age;
     }
 
+    // Abstract methods
     abstract void career();
     abstract int values();
 }
-
 class Son extends Parents {
+
     Son(String career, int age) {
-        super(career, age);
+        super(career, age); // valid constructor call
     }
 
     @Override
@@ -27,8 +32,8 @@ class Son extends Parents {
         return 10;
     }
 }
-
 class Daughter extends Parents {
+
     Daughter(String career, int age) {
         super(career, age);
     }
@@ -44,14 +49,4 @@ class Daughter extends Parents {
     }
 }
 
-public class Main {
-    public static void main(String[] args) {
-        Parents son = new Son("Engineer", 25);
-        son.career();
-        System.out.println(son.values());
 
-        Parents daughter = new Daughter("Doctor", 23);
-        daughter.career();
-        System.out.println(daughter.values());
-    }
-}
