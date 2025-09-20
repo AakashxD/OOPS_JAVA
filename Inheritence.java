@@ -12,7 +12,7 @@
  */
 
 
-
+// Put Final in class to prevent inhertience and the method inside the class will implicitily become final
 
 class Box {
     double l;
@@ -41,8 +41,12 @@ class Box {
         this.l = l;
         this.h = h;
         this.w = w;
+    } 
+    // cant overriden because no matter from from where ever u called, it doesnt recuire a obj and parent will always be called
+    // but we can inherit
+    static void greeting(){
+      System.out.println("INside Static");
     }
-
     public void print() {
         System.out.println("Val");
     }

@@ -6,6 +6,8 @@ public class PolyMorphismShapes {
   }
     
 }
+// final keyword is used to prevent the overridding
+// early binding and late binding -> concept of changing method in complie and runtime
 class Circle extends PolyMorphismShapes{
     double r=2.0;
 
