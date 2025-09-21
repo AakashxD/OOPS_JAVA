@@ -80,3 +80,33 @@ public class Inheritence {
         // call as upcasting 
     }
 }
+// ENCAPSULATION: Protecting "how" the data is managed.
+
+public class BankAccount {
+    // 1. Data is hidden using the 'private' access modifier.
+    private double balance;
+
+    // 2. A public "getter" method provides read-only access.
+    public double getBalance() {
+        return this.balance;
+    }
+
+    // 3. A public "setter" method provides controlled write access.
+    public void deposit(double amount) {
+        if (amount > 0) {
+            this.balance += amount;
+            System.out.println("Deposited: " + amount);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && amount <= this.balance) {
+            this.balance -= amount;
+            System.out.println("Withdrew: " + amount);
+        } else {
+            System.out.println("Invalid withdrawal amount or insufficient funds.");
+        }
+    }
+}
