@@ -1,30 +1,37 @@
-import java.util.Arrays;
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+import java.util.*;
+/**
+ * Start from the first index.
 
-public class SelectionSort {
+Find the minimum element in the unsorted portion of the array.
+
+Swap it with the first unsorted element.
+
+Move the boundary of the sorted part one step forward.
+
+Repeat until the whole array is sorted.
+ * 
+ * not a stable sorting
+ * 
+ * practical example -> 🧍 Choosing the shortest line at a store
+*/
+class SelectionSort {
     public static void main(String[] args) {
-        // divide array into two part sorted and UnSorted // find the min from unsorted and put it in first idx of unsorted idx
-
-
-        // not a stable sort
-
-        // position swap on random places
-        int[] arr={1,5,3,4,3,5,6};
-        int n=arr.length;
-
+        System.out.println("Try programiz.pro");
+        int[] arr={9,5,4,3,7,8,3,2,2,4,54,65,22,1};
+        
         for(int i=0;i<arr.length;i++){
-            int minIdx=i;
-           for(int j=i+1;j<n;j++){
-                if(arr[minIdx]>arr[j]){
-                    minIdx=j;
-                }
-           }
-           if(minIdx!=i){
-                int temp=arr[minIdx];
-                arr[minIdx]=arr[i];
-                arr[i]=temp;
-           }
+            int idx=i;
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[idx]>arr[j]) idx=j;
+            }
+            if(idx!=i){
+                int temp=arr[idx];
+                arr[idx]=arr[i];
+                  arr[i]=temp;
+            }
         }
         System.out.println(Arrays.toString(arr));
-
     }
 }
