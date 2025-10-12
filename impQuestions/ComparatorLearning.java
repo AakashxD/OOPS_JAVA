@@ -10,10 +10,14 @@ public class ComparatorLearning {
     public static void main(String[] args) {
         // List<Integer> list = new ArrayList<>(); // ✅ preferred way (uses interface type)
         // ArrayList<Integer> arrayList = new ArrayList<>(); // specific implementation
+
+        // Comparable is java.lang  compareTo
+
+        // Compare(int i,int j)
       Comparator<Integer> com = new Comparator<Integer>() {
            
             public int compare(Integer a, Integer b) {
-                return b - a; // descending
+                return b - a; 
             }
         };
 

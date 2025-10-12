@@ -59,20 +59,20 @@ ROLLBACK TO before_update;
 
 🧩 1️⃣ What is Normalization?
 
+Normalization is the process of organizing data in a database to reduce redundancy (duplicate data) and improve data integrity.
+
 Normalization is a process of reducing redundancy by organizing the data into multiple tables. Normalization leads to better usage of disk spaces and makes it easier to maintain the integrity of the database.  
 
 # Denormalization
 DeN is the reverse process of normalization as it combines the tables which have been normalized into a single table so that data retrieval becomes faster. JOIN operation allows us to create a denormalized form of the data by reversing the normalization. 
 
+| Normal Form                  | Rule                                                                               | Example                                      |
 
-| Normal Form | Removes                 | Rule / Condition                          |
-| ----------- | ----------------------- | ----------------------------------------- |
-| **1NF**     | Repeating groups        | Atomic values only                        |
-| **2NF**     | Partial dependency      | Every non-key depends on full primary key |
-| **3NF**     | Transitive dependency   | Non-key depends only on key               |
-| **BCNF**    | Advanced anomalies      | LHS of every dependency is a super key    |
-| **4NF**     | Multi-valued dependency | No independent multi-valued facts         |
-| **5NF**     | Join dependency         | No unnecessary table joins                |
+| **1NF (First Normal Form)**  | Each column holds atomic (single) values — no repeating groups.                    |  {Maths1, Maths2} → ✅ separate rows/columns |
+| **2NF (Second Normal Form)** | 1NF + no partial dependency (non-key column depends on part of composite key).     | Splitting composite-key tables               |
+| **3NF (Third Normal Form)**  | 2NF + no transitive dependency (non-key column depends on another non-key column). | Remove derived attributes                    |
+| **BCNF (Boyce-Codd)**        | Stronger version of 3NF — every determinant must be a candidate key.               | Used in complex relationships                |
+
 
 
 
@@ -114,3 +114,37 @@ For every functional dependency of any attribute A on B
 
 # views
 - mutliple table joins -> complex query store in the database virtual table acts like a table and joins also( result not store just query is stored)-> for storing the result Result of Materialised views are stored as snapshot in db.
+
+
+# Transaction 
+A transaction in a database is a sequence of one or more SQL operations (like INSERT, UPDATE, DELETE) that are executed as a single unit of work.
+
+Either all operations succeed, or none of them are applied.
+
+Ensures data consistency, reliability, and integrity in databases.
+
+| Property        | Description                                                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------ |
+| **Atomicity**   | All operations in the transaction are executed **as a single unit**. If one fails, the whole transaction **rolls back**. |
+| **Consistency** | The database moves from one **valid state** to another valid state after the transaction.                                |
+| **Isolation**   | Transactions are **independent**; intermediate states are **not visible** to other transactions.                         |
+| **Durability**  | Once a transaction is committed, the changes are **permanent**, even if the system crashes.               
+
+
+#  Start Transaction
+BEGIN TRANSACTION;
+
+UPDATE Accounts SET balance = balance - 1000 WHERE name = 'Alice';
+UPDATE Accounts SET balance = balance + 1000 WHERE name = 'Bob';
+
+-- If both succeed
+COMMIT;
+
+- If any operation fails
+ROLLBACK;
+               |
+
+
+SELECT marks, name
+FROM Marks
+WHERE marks > (SELECT AVG(marks) FROM Marks);
